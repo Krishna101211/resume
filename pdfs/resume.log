@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.1)  7 MAY 2026 17:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.1)  7 MAY 2026 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -383,8 +383,7 @@ LaTeX Font Info:    Trying to load font information for OT1+bch on input line 6
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/psnfss/ot1bch.fd
 File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
-)
-No file resume.aux.
+) (pdfs/resume.aux)
 \openout1 = `resume.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
@@ -408,6 +407,7 @@ LaTeX Font Info:    ... okay on input line 69.
 Package hyperref Info: Link coloring OFF on input line 69.
 \c@mv@tabular=\count312
 \c@mv@boldtabular=\count313
+
 (/opt/texlive/texdir/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count314
@@ -466,19 +466,12 @@ enddocument/afterlastpage (AED): lastpage setting LastPage.
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package lastpage Warning: Rerun to get the references right on input line 193.
-
  ) 
 Here is how much of TeX's memory you used:
- 13908 strings out of 467349
- 241562 string characters out of 5417750
+ 13911 strings out of 467349
+ 241615 string characters out of 5417750
  659715 words of memory out of 5000000
- 42834 multiletter control sequences out of 15000+600000
+ 42835 multiletter control sequences out of 15000+600000
  640145 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,342b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -488,7 +481,7 @@ e5/FontAwesome5Free-Solid.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/bitst
 rea/charter/bchb8a.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/bitstrea/cha
 rter/bchr8a.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/bitstrea/charter/bc
 hri8a.pfb>
-Output written on pdfs/resume.pdf (2 pages, 66797 bytes).
+Output written on pdfs/resume.pdf (2 pages, 66789 bytes).
 PDF statistics:
  56 PDF objects out of 1000 (max. 8388607)
  40 compressed objects within 1 object stream
