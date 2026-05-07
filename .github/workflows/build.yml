@@ -17,6 +17,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-latex-recommended
+
       - name: Find and compile all .tex files
         run: |
           for tex in $(find . -name '*.tex' -not -path './.git/*'); do
@@ -24,8 +29,8 @@ jobs:
             base=$(basename "$tex" .tex)
             echo "Compiling: $tex"
             cd "$dir"
-            pdflatex -interaction=nonstopmode -file-line-error "$base.tex" > /dev/null 2>&1
-            pdflatex -interaction=nonstopmode -file-line-error "$base.tex" > /dev/null 2>&1
+            pdflatex -interaction=nonstopmode -file-line-error "$base.tex"
+            pdflatex -interaction=nonstopmode -file-line-error "$base.tex"
             cd - > /dev/null
           done
 
