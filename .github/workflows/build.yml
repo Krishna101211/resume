@@ -9,36 +9,39 @@ permissions:
   contents: write
 
 jobs:
-  build_latex:
+  discover:
     runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.find.outputs.files }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: find
+        run: |
+          FILES=$(find . -name '*.tex' -not -path './.git/*' | sed 's|^\./||' | jq -R . | jq -s .)
+          echo "files=$FILES" >> $GITHUB_OUTPUT
 
+  build:
+    needs: discover
+    runs-on: ubuntu-latest
+    if: needs.discover.outputs.files != '[]'
+    strategy:
+      matrix:
+        file: ${{ fromJson(needs.discover.outputs.files) }}
+      fail-fast: false
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install TeX Live
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-latex-recommended
-
-      - name: Find and compile all .tex files
-        run: |
-          find . -name '*.tex' -not -path './.git/*' -print0 | while IFS= read -r -d '' tex; do
-            dir=$(dirname "$tex")
-            base=$(basename "$tex" .tex)
-            echo "Compiling: $tex"
-            cd "$dir"
-            pdflatex -interaction=nonstopmode -file-line-error "$base.tex"
-            pdflatex -interaction=nonstopmode -file-line-error "$base.tex"
-            cd - > /dev/null
-          done
+      - name: Compile ${{ matrix.file }}
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ${{ matrix.file }}
 
       - name: Commit PDFs
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add '*.pdf'
-          git add '**/*.pdf'
-          git commit -m "Update PDFs" || echo "No changes"
+          git commit -m "Update PDF" || echo "No changes"
           git push
