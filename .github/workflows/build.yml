@@ -24,7 +24,7 @@ jobs:
 
       - name: Find and compile all .tex files
         run: |
-          for tex in $(find . -name '*.tex' -not -path './.git/*'); do
+          find . -name '*.tex' -not -path './.git/*' -print0 | while IFS= read -r -d '' tex; do
             dir=$(dirname "$tex")
             base=$(basename "$tex" .tex)
             echo "Compiling: $tex"
