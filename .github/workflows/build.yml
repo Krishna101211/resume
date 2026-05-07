@@ -1,4 +1,4 @@
-name: Build Resume PDF
+name: Build Resume PDFs
 
 on:
   push:
@@ -17,15 +17,23 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Compile LaTeX
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: resume.tex
+      - name: Find and compile all .tex files
+        run: |
+          for tex in $(find . -name '*.tex' -not -path './.git/*'); do
+            dir=$(dirname "$tex")
+            base=$(basename "$tex" .tex)
+            echo "Compiling: $tex"
+            cd "$dir"
+            pdflatex -interaction=nonstopmode -file-line-error "$base.tex" > /dev/null 2>&1
+            pdflatex -interaction=nonstopmode -file-line-error "$base.tex" > /dev/null 2>&1
+            cd - > /dev/null
+          done
 
-      - name: Commit PDF
+      - name: Commit PDFs
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add resume.pdf
-          git commit -m "Update PDF" || echo "No changes"
+          git add '*.pdf'
+          git add '**/*.pdf'
+          git commit -m "Update PDFs" || echo "No changes"
           git push
