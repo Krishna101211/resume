@@ -1,49 +1,192 @@
-\documentclass[11pt,a4paper]{article}
+%%%% One-Page Resume (Data Analyst / GenAI Developer) %%%%
 
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
 \usepackage{titlesec}
 \usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+\usepackage{xcolor}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-0.85in}
+\addtolength{\textheight}{1.65in}
+
+\setlength{\multicolsep}{-3pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\raggedbottom
+\raggedright
+
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%---------- Custom Commands ----------%
+
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}\\[6pt]
+    {\color{accentLine}\hrule}\\[2pt]
+    \footnotesize{#2}\\[2pt]
+    {\color{accentLine}\hrule}
+  \end{center}
 }
 
-\titleformat{\section}{\Large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\section}{
+  \vspace{-6pt}\color{accentText}\raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+\newenvironment{resume_list}{
+  \vspace{-4pt}
+  \begin{itemize}[leftmargin=18pt, itemsep=-3pt]
+}{
+  \end{itemize}
+}
+
+\renewcommand\labelitemi{--}
+
+%---------- Document ----------%
 
 \begin{document}
 
-\centering
-{\Huge\bfseries Your Name}\\[0.5em]
-\href{mailto:you@example.com}{you@example.com} |
-\href{https://github.com/Krishna101211}{github.com/Krishna101211} |
-+91 XXXXXXXXXX
+\documentTitle{Krushna Shinde}{
+  \href{tel:+919022710360}{\faPhone\ +91 9022710360} ~|~
+  \href{mailto:krushnashinde1012@gmail.com}{\faEnvelope\ krushnashinde1012@gmail.com} ~|~
+  \href{https://www.linkedin.com/in/krushna-shinde-549165276/}{\faLinkedin\ linkedin.com/in/krushna-shinde} ~|~
+  \href{https://github.com/Krishna101211}{\faGithub\ github.com/Krushnashinde}
+}
 
-\vspace{1em}
-\raggedright
+%---------------------------%
+% Summary
+%---------------------------%
 
-\section*{Education}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{B.Tech in Computer Science} --- Your University (2022--2026)
-\end{itemize}
+\section*{Summary}
+Detail-oriented Data Analyst and aspiring GenAI Developer with expertise in Python, SQL, and Power BI. Experienced in building RAG-based AI systems, backend APIs using FastAPI, and performing end-to-end data analysis. Skilled in deriving actionable insights and developing scalable AI-powered applications.
+
+%---------------------------%
+% Skills
+%---------------------------%
 
 \section*{Skills}
-\begin{itemize}[leftmargin=*]
-    \item Programming: Python, C++, JavaScript
-    \item Tools: Git, Docker, Linux
-\end{itemize}
+\begin{tabular}{p{0.32\linewidth} p{0.65\linewidth}}
+  \textbf{Programming:} & Python, TypeScript, SQL \\
+  \textbf{Frameworks:} & FastAPI, LangChain, LangGraph, React \\
+  \textbf{Cloud \& DevOps:} & AWS (EC2, S3, CodePipeline, CodeBuild), Docker, GitHub Actions \\
+  \textbf{Databases:} & SQL, postgres\\
+  \textbf{AI/ML:} & RAG, Basic Machine Learning, HuggingFace Embeddings, CrossEncoder Reranking \\
+  \textbf{Data Tools:} & Power BI, Excel, Pandas, NumPy \\
+  \textbf{Tools:} & Git, GitHub, Postman (API Testing), VS Code \\
+\end{tabular}
 
-\section*{Projects}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Project Name} --- Short description of what you built and technologies used.
-\end{itemize}
+%---------------------------%
+% Experience
+%---------------------------%
 
 \section*{Experience}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Role} --- Company Name (Date--Date)\\
-          Brief description of responsibilities.
-\end{itemize}
+
+\textbf{Data Analyst Intern – Robowave} \hfill Jan 2025 – Feb 2025
+\begin{resume_list}
+  \item Collected, cleaned, and analyzed datasets using SQL and Python.
+  \item Built Power BI dashboards to visualize KPIs and business metrics.
+  \item Generated insights to improve operational efficiency.
+\end{resume_list}
+
+\textbf{MLOps \& Backend Engineer Intern – Blocksone} \hfill Feb 2025 – Present
+\begin{resume_list}
+  \item Contributed to backend development using Python, working on APIs and real-world application workflows.
+  \item Gained experience in product development lifecycle from initial design to deployment stages.
+  \item Debugged API issues in large codebases, improving system stability and performance.
+  \item Built foundational knowledge in blockchain, reinforcement learning, and collaborative development practices.
+\end{resume_list}
+
+%---------------------------%
+% Projects
+%---------------------------%
+
+\section*{Projects}
+
+\textbf{Lawyer Friend — AI Traffic Law Assistant (FastAPI, Langchain)} 
+\hfill \href{https://huggingface.co/spaces/krushna101211/traffic-lawyer}{Link}
+\begin{resume_list}
+  \item Built a full-stack RAG-based legal assistant to answer Maharashtra traffic law queries with source citations.
+  \item Designed hybrid retrieval pipeline (vector + BM25), Reciprocal Rank Fusion, and CrossEncoder reranking.
+  \item Implemented a self-correcting LangGraph agent with query rephrasing and answer regeneration.
+  \item Developed a structure-aware document ingestion system extracting legal metadata using regex.
+  \item Integrated Redis memory, caching, and Docker-based deployment for production readiness.
+\end{resume_list}
+
+\textbf{Customer Behavior Data Analytics (Python, SQL, Power BI)} 
+\hfill \href{https://github.com/Krishna101211/Customer-behaviour-/blob/main/customer_behavior_dashboard.pdf}{Link}
+\begin{resume_list}
+  \item Performed end-to-end data analysis including data cleaning, transformation, and EDA using Python.
+  \item Designed SQL queries to analyze revenue trends, customer demographics, and discount impact.
+  \item Built an interactive Power BI dashboard to visualize KPIs such as total revenue, customer segmentation, and purchase behavior.
+  \item Generated actionable insights that improved understanding of customer buying patterns.
+\end{resume_list}
+
+\textbf{Blinkit Sales Analysis Dashboard (Power BI, Excel)} 
+\hfill \href{https://github.com/Krishna101211/Blinkit-sales-analysis-/blob/main/Blinkit.pdf}{Link}
+\begin{resume_list}
+  \item Analyzed sales data to identify trends in product categories and outlet performance.
+  \item Performed data cleaning and transformation using Power Query.
+  \item Created DAX measures for KPIs such as Total Sales and Average Rating.
+  \item Designed interactive dashboards for business decision-making.
+\end{resume_list}
+
+%---------------------------%
+% Activities
+%---------------------------%
+
+\section*{Activities}
+\textbf{Microsoft Learn Student Club (MLSC)} – Design \& Media Lead \hfill May 2023 -- Dec 2023
+\begin{resume_list}
+  \item Collaborated with teams for event execution and technical content delivery.
+  \item Designed visuals to improve communication and engagement.
+\end{resume_list}
+
+%---------------------------%
+% Certifications
+%---------------------------%
+
+\section*{Certifications}
+\begin{resume_list}
+  \item \textbf{Microsoft PL-300: Power BI Data Analyst} – Microsoft Certified (2025)
+  \item Prompt Engineering – Udemy
+  \item MS-CIT Certification
+  \item QSpiders Data Analyst (Python, SQL, Power BI)
+\end{resume_list}
+
+%---------------------------%
+% Education
+%---------------------------%
+
+\section*{Education}
+
+\textbf{B.E. in Computer Science – GES R.H. Sapat College of Engineering, Nashik (SPPU)} \hfill 2025 \\
+\textit{CGPA: 6.9} \\[-2pt]
+
+\textbf{HSC – HPT Arts and RYK Science College} \hfill 2021 \\
+\textit{81\%} \\[-2pt]
+
+\textbf{SSC – Madhyamik Vidyalaya, Untwadi} \hfill 2019 \\
+\textit{82.40\%}
 
 \end{document}
