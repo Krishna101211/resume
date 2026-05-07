@@ -17,8 +17,8 @@ jobs:
       - uses: actions/checkout@v4
       - id: find
         run: |
-          FILES=$(find . -name '*.tex' -not -path './.git/*' | sed 's|^\./||' | jq -R . | jq -s .)
-          echo "files=$FILES" >> $GITHUB_OUTPUT
+          FILES=$(find . -name '*.tex' -not -path './.git/*' | sed 's|^\./||' | jq -R . | jq -sc .)
+          echo "files=${FILES}" >> "$GITHUB_OUTPUT"
 
   build:
     needs: discover
