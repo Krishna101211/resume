@@ -44,7 +44,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: src/${{ matrix.file }}.tex
-          args: -output-directory=pdfs
+          compiler: pdflatex
+          args: -pdf -output-directory=pdfs
 
       - name: Commit PDF
         run: |
